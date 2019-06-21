@@ -19,18 +19,17 @@ image= image.transpose()
 #print image.shape
 #print "imagen convertida: "
 key = scipy.misc.imread("C:\Users\Pavilion\Desktop\Octavo\IA2\ReposTercerParcial\IAII\practicacurso\inumero.jpg")
-imagen = img.imread("inumero.jpg")
 print "imagen a colors"
 #lx, ly, lz = key.shape
 #crop_lena = key[lx/3:-lx/3, ly/3:-ly/3]
-#pl.imshow(key)
-imagen.show()
+pl.imshow(key)
+pl.show()
 print key.shape
 
 
 #No da esta parte de la imagen pa cambiar el tamaño
 
-ext = imagen.resize((20, 20))
+ext = key.resize((20, 20))
 ext.show()
 
 
