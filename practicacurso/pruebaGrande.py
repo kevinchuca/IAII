@@ -4,6 +4,7 @@ import matplotlib.image as img
 import numpy
 import scipy.misc
 import matplotlib.pyplot as pl
+from PIL import Image
 
 r=loadmat ("modeloDig")
 #print "la tabla contiene:"
@@ -13,26 +14,39 @@ r=loadmat ("modeloDig")
 #print "thetha 2 es: "
 #print r['Theta2'].shape
 #print "la imagen mide: "
-image = img.imread("inumero.jpg")
+image = img.imread("IMG_20190620_212744.png")
 
 
 image= image.transpose()
 #print image.shape
 #print "imagen convertida: "
-key = scipy.misc.imread("C:\Users\Pavilion\Desktop\Octavo\IA2\ReposTercerParcial\IAII\practicacurso\inumero.jpg")
+key = scipy.misc.imread("D:\Unidad D\EMI\8vo semestre\INTELIGENCIA ARTIIFICIAL II\RECONOCIMIENTO\IAII\practicacurso\IMG_20190620_212744.png")
 #No da esta parte de la imagen pa cambiar el tamaño
 #ext = key.resize((20, 20), img.ANTIALIAS)
 #key.save("BICUBIC" + ext)
 
-print "imagen a colors"
-lx, ly, lz = key.shape
-crop_lena = key[lx/3:-lx/3, ly/3:-ly/3]
-pl.imshow(crop_lena)
 
+print "imagen a colors"
+imagen = Image.open("IMG_20190620_212744.png")
+imagen.show()
+print imagen.size
+print "imagen reducida"
+ext = imagen.resize((20, 20), Image.BICUBIC)
+#key.save("BICUBIC" + ext)
+ext.show()
+print ext.size
+ext.save("mini.png")
+key = scipy.misc.imread("D:\Unidad D\EMI\8vo semestre\INTELIGENCIA ARTIIFICIAL II\RECONOCIMIENTO\IAII\practicacurso\mini.png")
+print "imagen reducida colores"
+
+
+#lx, ly, lz = key.shape
+#crop_lena = key[lx/3:-lx/3, ly/3:-ly/3]
+pl.imshow(key)
 pl.show()
 print key.shape
 key2= key.transpose().flatten()
-#print "el aplanado es: ",key2
+print "el aplanado es: ",key2.shape
 vec=numpy.ones((1))
 X=numpy.append(vec,key2)
 
