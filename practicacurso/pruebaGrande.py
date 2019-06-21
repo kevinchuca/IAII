@@ -25,7 +25,10 @@ key = scipy.misc.imread("C:\Users\Pavilion\Desktop\Octavo\IA2\ReposTercerParcial
 #key.save("BICUBIC" + ext)
 
 print "imagen a colors"
-pl.imshow(key)
+lx, ly, lz = key.shape
+crop_lena = key[lx/3:-lx/3, ly/3:-ly/3]
+pl.imshow(crop_lena)
+
 pl.show()
 print key.shape
 key2= key.transpose().flatten()
@@ -36,7 +39,7 @@ X=numpy.append(vec,key2)
 
 def verDigito(image):
     fila=image
-    fila=fila.reshape(800,500)
+    fila=fila.reshape(20,20)
     print fila.shape
     pl.imshow(fila.transpose(),cmap="Greys_r")
     pl.show()
