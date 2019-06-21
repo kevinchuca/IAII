@@ -4,7 +4,6 @@ import matplotlib.image as img
 import numpy
 import scipy.misc
 import matplotlib.pyplot as pl
-
 r=loadmat ("modeloDig")
 #print "la tabla contiene:"
 #print r.keys()
@@ -20,17 +19,21 @@ image= image.transpose()
 #print image.shape
 #print "imagen convertida: "
 key = scipy.misc.imread("C:\Users\Pavilion\Desktop\Octavo\IA2\ReposTercerParcial\IAII\practicacurso\inumero.jpg")
-#No da esta parte de la imagen pa cambiar el tamaño
-#ext = key.resize((20, 20), img.ANTIALIAS)
-#key.save("BICUBIC" + ext)
-
+imagen = img.imread("inumero.jpg")
 print "imagen a colors"
-lx, ly, lz = key.shape
-crop_lena = key[lx/3:-lx/3, ly/3:-ly/3]
-pl.imshow(crop_lena)
-
-pl.show()
+#lx, ly, lz = key.shape
+#crop_lena = key[lx/3:-lx/3, ly/3:-ly/3]
+#pl.imshow(key)
+imagen.show()
 print key.shape
+
+
+#No da esta parte de la imagen pa cambiar el tamaño
+
+ext = imagen.resize((20, 20))
+ext.show()
+
+
 key2= key.transpose().flatten()
 #print "el aplanado es: ",key2
 vec=numpy.ones((1))
