@@ -5,6 +5,8 @@ import numpy
 import scipy.misc
 import matplotlib.pyplot as pl
 from PIL import Image
+import cv2
+
 
 r=loadmat ("modeloDig")
 #print "la tabla contiene:"
@@ -25,17 +27,29 @@ key = scipy.misc.imread("inumero.jpg")
 #ext = key.resize((20, 20), img.ANTIALIAS)
 #key.save("BICUBIC" + ext)
 
+print "imagen a colors"
+imagen = Image.open("inumero.jpg")
+imagen.show()
+print imagen.size
+
+print "gris"
+#imagen_gris = imagen.convert('L')
+#imagen_gris.show()
+#print imagen_gris.size
+
+gray = cv2.imread('inumero.jpg', cv2.IMREAD_GRAYSCALE)
+t, dst = cv2.threshold(gray, 170, 255, cv2.THRESH_BINARY)
+#cv2.imshow('umbral', gray)
+#cv2.imshow('result', dst)
+cv2.imwrite('inumero.jpg', dst)
+#cv2.waitKey(0)
 
 print "imagen a colors"
 imagen = Image.open("inumero.jpg")
 imagen.show()
 print imagen.size
-print "gris"
-imagen_gris = imagen.convert('L')
-imagen_gris.show()
-print imagen_gris.size
 print "imagen reducida"
-ext = imagen_gris.resize((20, 20), Image.BICUBIC)
+ext = imagen.resize((20, 20), Image.BICUBIC)
 ext.show()
 print ext.size
 ext.save("minisi.jpg")
