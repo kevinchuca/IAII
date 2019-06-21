@@ -18,11 +18,11 @@ class CameraExample(App):
 
         self.cameraObject.play = True
 
-        self.cameraObject.resolution = (300, 300)  # Specify the resolution
+        self.cameraObject.resolution = (800, 500)  # Specify the resolution
 
         # Create a button for taking photograph
 
-        self.camaraClick = Button(text="Take Photo")
+        self.camaraClick = Button(text="Take Photo", background_color=(0,0,255,255))
 
         self.camaraClick.size_hint = (.5, .2)
 
@@ -46,7 +46,7 @@ class CameraExample(App):
 
     def onCameraClick(self, *args):
         timestr = time.strftime("%Y%m%d_%H%M%S")
-        self.cameraObject.export_to_png("IMG_{}.png".format(timestr))
+        self.cameraObject.export_to_png("inumero.jpg".format(timestr))
 # Start the Camera App
 
 if __name__ == '__main__':
