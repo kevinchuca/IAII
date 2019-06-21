@@ -14,34 +14,34 @@ r=loadmat ("modeloDig")
 #print "thetha 2 es: "
 #print r['Theta2'].shape
 #print "la imagen mide: "
-image = img.imread("IMG_20190620_212744.png")
+image = img.imread("inumero.jpg")
 
 
 image= image.transpose()
 #print image.shape
 #print "imagen convertida: "
-key = scipy.misc.imread("D:\Unidad D\EMI\8vo semestre\INTELIGENCIA ARTIIFICIAL II\RECONOCIMIENTO\IAII\practicacurso\IMG_20190620_212744.png")
+key = scipy.misc.imread("inumero.jpg")
 #No da esta parte de la imagen pa cambiar el tamaño
 #ext = key.resize((20, 20), img.ANTIALIAS)
 #key.save("BICUBIC" + ext)
 
 
 print "imagen a colors"
-imagen = Image.open("IMG_20190620_212744.png")
+imagen = Image.open("inumero.jpg")
 imagen.show()
 print imagen.size
+print "gris"
+imagen_gris = imagen.convert('L')
+imagen_gris.show()
+print imagen_gris.size
 print "imagen reducida"
-ext = imagen.resize((20, 20), Image.BICUBIC)
-#key.save("BICUBIC" + ext)
+ext = imagen_gris.resize((20, 20), Image.BICUBIC)
 ext.show()
 print ext.size
-ext.save("mini.png")
-key = scipy.misc.imread("D:\Unidad D\EMI\8vo semestre\INTELIGENCIA ARTIIFICIAL II\RECONOCIMIENTO\IAII\practicacurso\mini.png")
+ext.save("minisi.jpg")
+key = scipy.misc.imread("minisi.jpg")
 print "imagen reducida colores"
 
-
-#lx, ly, lz = key.shape
-#crop_lena = key[lx/3:-lx/3, ly/3:-ly/3]
 pl.imshow(key)
 pl.show()
 print key.shape
@@ -57,7 +57,6 @@ def verDigito(image):
     pl.imshow(fila.transpose(),cmap="Greys_r")
     pl.show()
 print "imagen sinnnnn colors"
-
 verDigito(key2)
 
 #print "x vale: ",X.shape
@@ -75,10 +74,10 @@ def algoritmoFP( a):
     return a
 def sigmoide(h):
     return 1. / (1 + numpy.e ** (-h))
-#print "aplicacion del algoritmo FP, nos da a: "
+print "aplicacion del algoritmo FP, nos da a: "
  #a[1]=x
 aa= algoritmoFP( X)
-#print numpy.argmax(aa)+1
+print numpy.argmax(aa)+1
 
 def aplanar(t1,t2):
     c=numpy.append(t1.flatten(),t2.flatten())
