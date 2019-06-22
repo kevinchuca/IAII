@@ -93,34 +93,34 @@ print "aplicacion del algoritmo FP, nos da a: "
 aa= algoritmoFP( X)
 print numpy.argmax(aa)+1
 
-def aplanar(t1,t2):
-    c=numpy.append(t1.flatten(),t2.flatten())
-    return c
-print "el titha aplanado es: ",aplanar(r['Theta1'],r['Theta2'])
+#def aplanar(t1,t2):
+ #   c=numpy.append(t1.flatten(),t2.flatten())
+  #  return c
+#print "el titha aplanado es: ",aplanar(r['Theta1'],r['Theta2'])
 
-def armar(p):
-    n=25*401
-    t1=p[0:n]
-    t1=t1.reshape(25,401)
-    t2=p[n+1:]
-    t2=t2.reshape(10,26)
-    return t1,t2
+#def armar(p):
+ #   n=25*401
+ #   t1=p[0:n]
+ #   t1=t1.reshape(25,401)
+ #   t2=p[n+1:]
+ #   t2=t2.reshape(10,26)
+ #   return t1,t2
     #ahora puedo calcular h, aplico propagacion asia adelante de una fila para la y y calculo la funcion costooo
 
-Theta = numpy.ones(401)
-def funcionCosto(theta,etiqueta):
-    aux=(aa==etiqueta)
-    m=X.shape[0]#numero de filas
-    theta=theta.reshape(401,1)
-    h= sigmoide(X.dot(theta))
-    regularizacionn=1 /(2.*m)*(theta**2)
+#Theta = numpy.ones(401)
+#def funcionCosto(theta,etiqueta):
+ #   aux=(aa==etiqueta)
+ #   m=X.shape[0]#numero de filas
+ #   theta=theta.reshape(401,1)
+ #   h= sigmoide(X.dot(theta))
+ #   regularizacionn=1 /(2.*m)*(theta**2)
     #print aux.transpose().shape
     #print numpy.log(h).shape
-    j = -(1. / m) * (aux.transpose().dot(numpy.log(h)) + ( aux-1).transpose().dot(numpy.log(1 - h)))
-    j=j.sum()+regularizacionn
-    return j.sum()
+ #   j = -(1. / m) * (aux.transpose().dot(numpy.log(h)) + ( aux-1).transpose().dot(numpy.log(1 - h)))
+ #   j=j.sum()+regularizacionn
+ #   return j.sum()
 
-funcionCosto(Theta,6)
+#funcionCosto(Theta,6)
 
 
 
