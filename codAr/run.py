@@ -1,10 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#http://razonartificial.com/2010/08/arboles-e-inteligencia-artificial-ii/
-#-------------------------------------
-#https://iartificial.net/arboles-de-decision-con-ejemplos-en-python/
-#http://www.aprendemachinelearning.com/arbol-de-decision-en-python-clasificacion-y-prediccion/
-# Clases
 # -----------------------------------------------------------
 
 class Arbol:
@@ -29,35 +24,32 @@ def si(preg):
 
 def main():
     bucle = True
-    raiz = Arbol("pajaro")#crea un arbol
+    raiz = Arbol("Estudiante")#crea un arbol
     while bucle:
-        if not si("Estas pensando en un animal? "): break
-
+        if not si("¿Esta pensando en una persona de la EMI? "): break
         arbol = raiz
         while arbol.izquierda != None:
             if si(arbol.carga + "? "):
                 arbol = arbol.izquierda
             else:
                 arbol = arbol.derecha
-
         #adivinar
-        animal = arbol.carga
-        if si("Es un " + animal + "? "):
+        persona = arbol.carga
+        if si("¿Esa persona es " + persona + "? "):
             print "Soy el más grande!"
             continue
 
         #obtener informacion
-        nuevo = raw_input("Qué animal era? ")
-        info = raw_input("Qué diferencia a un " + animal + " de un " + nuevo + "? ")
-        indicador = "Si el animal fuera un " + animal + " cual seria la respuesta? "
+        nuevo = raw_input("¿Qué cargo tiene esa persona? ")
+        info = raw_input("¿Que pregunta distinguiría " + persona + " de un " + nuevo + " ? ")
+        indicador = "¿Si la persona fuera un " + persona + " cual seria la respuesta? "
         arbol.carga = info
         if si(indicador):
-            arbol.izquierda = Arbol(animal)
+            arbol.izquierda = Arbol(persona)
             arbol.derecha = Arbol(nuevo)
         else:
-            arbol.derecha = Arbol(animal)
+            arbol.derecha = Arbol(persona)
             arbol.izquierda = Arbol(nuevo)
-
     return 0
 
 if __name__ == '__main__':
